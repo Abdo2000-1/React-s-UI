@@ -53,7 +53,7 @@ export default function Cases() {
   const paginatedCases = filteredCases.slice((currentPage - 1) * 10, currentPage * 10);
 
   return (
-    <div className="p-4 sm:p-6 max-w-7xl mx-auto space-y-6">
+    <div className="w-full min-w-0 max-w-7xl mx-auto space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Cases</h1>
@@ -143,8 +143,8 @@ export default function Cases() {
         </div>
       ) : viewMode === 'table' ? (
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div className="w-full">
-            <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400 divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left text-sm text-gray-500 dark:text-gray-400 divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
                 <tr>
                   <th className="px-4 py-3">Case #</th>

@@ -186,7 +186,7 @@ export function Header({ onMenuClick }: HeaderProps) {
           </button>
 
           {notifsOpen && (
-            <div className="absolute right-0 mt-2 w-80 sm:w-96 rounded-2xl bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700 py-3 z-50 animate-slide-up">
+            <div className="absolute right-0 mt-2 w-[calc(100vw-2rem)] max-w-sm sm:w-96 sm:max-w-none rounded-2xl bg-white dark:bg-gray-800 shadow-2xl border border-gray-200 dark:border-gray-700 py-3 z-50 animate-slide-up">
               <div className="flex items-center justify-between px-4 pb-2 border-b border-gray-100 dark:border-gray-700">
                 <span className="font-bold text-sm text-gray-900 dark:text-white">Recent Alerts</span>
                 {unreadNotifs.length > 0 && (

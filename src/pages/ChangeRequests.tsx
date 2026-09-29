@@ -53,7 +53,7 @@ export default function ChangeRequests() {
   const paginatedRequests = filteredRequests.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto p-4 sm:p-6">
+    <div className="space-y-6 max-w-7xl mx-auto w-full min-w-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Change Requests</h1>
@@ -142,8 +142,8 @@ export default function ChangeRequests() {
             <EmptyState title="No change requests found" description="Try adjusting your filters or search query." />
           </div>
         ) : viewMode === 'table' ? (
-          <div className="w-full">
-            <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400 divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left text-sm text-gray-500 dark:text-gray-400 divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="text-xs uppercase bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-800">
                 <tr>
                   <th className="px-4 py-3.5 font-semibold">Request #</th>

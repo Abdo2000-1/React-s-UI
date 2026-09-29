@@ -53,7 +53,7 @@ export default function Documents() {
   const paginatedDocs = filteredDocs.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto p-4 sm:p-6">
+    <div className="space-y-6 max-w-7xl mx-auto w-full min-w-0">
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Documents</h1>
         <p className="text-gray-500 dark:text-gray-400 mt-1">Manage files, prescriptions, and reports ({documents.length} total)</p>
@@ -102,8 +102,8 @@ export default function Documents() {
         {paginatedDocs.length === 0 ? (
           <EmptyState title="No documents found" description="Try adjusting your filters or search query." icon={<FileText className="w-8 h-8" />} />
         ) : viewMode === 'table' ? (
-          <div className="w-full">
-            <table className="w-full text-left divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left divide-y divide-gray-200 dark:divide-gray-700">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-900 text-xs text-gray-500 dark:text-gray-400 uppercase">
                   <th className="px-4 py-3">Name</th>

@@ -105,7 +105,7 @@ export default function Grid() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 w-full min-w-0">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -191,7 +191,7 @@ export default function Grid() {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-gray-200 dark:border-gray-800 gap-2">
+      <div className="flex border-b border-gray-200 dark:border-gray-800 gap-2 overflow-x-auto no-scrollbar pb-px">
         {[
           { id: 'orders', label: 'Orders Grid', count: filteredOrders.length },
           { id: 'patients', label: 'Patients Directory', count: filteredPatients.length },
@@ -201,7 +201,7 @@ export default function Grid() {
           <button
             key={tab.id}
             onClick={() => { setActiveTab(tab.id as GridTab); setPage(1); }}
-            className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+            className={`shrink-0 whitespace-nowrap flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
               activeTab === tab.id
                 ? 'border-blue-600 text-blue-600 dark:text-blue-400'
                 : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
@@ -248,7 +248,8 @@ export default function Grid() {
       {/* Tab 1: Orders Grid */}
       {activeTab === 'orders' && (
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <table className="w-full text-left text-xs text-gray-500 dark:text-gray-400">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left text-xs text-gray-500 dark:text-gray-400">
             <thead className="text-[11px] uppercase bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-800">
               <tr>
                 <th className="px-3.5 py-3 font-semibold">Order #</th>
@@ -299,13 +300,15 @@ export default function Grid() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
       {/* Tab 2: Patients Directory */}
       {activeTab === 'patients' && (
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <table className="w-full text-left text-xs text-gray-500 dark:text-gray-400">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left text-xs text-gray-500 dark:text-gray-400">
             <thead className="text-[11px] uppercase bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-800">
               <tr>
                 <th className="px-3.5 py-3 font-semibold">Patient Name</th>
@@ -358,13 +361,15 @@ export default function Grid() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
       {/* Tab 3: Services Catalog */}
       {activeTab === 'services' && (
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <table className="w-full text-left text-xs text-gray-500 dark:text-gray-400">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[650px] text-left text-xs text-gray-500 dark:text-gray-400">
             <thead className="text-[11px] uppercase bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-800">
               <tr>
                 <th className="px-3.5 py-3 font-semibold">Service Name</th>
@@ -416,13 +421,15 @@ export default function Grid() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
       {/* Tab 4: Workflow Matrix */}
       {activeTab === 'workflow' && (
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <table className="w-full text-left text-xs text-gray-500 dark:text-gray-400">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left text-xs text-gray-500 dark:text-gray-400">
             <thead className="text-[11px] uppercase bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-800">
               <tr>
                 <th className="px-2 py-3 w-8"></th>
@@ -522,6 +529,7 @@ export default function Grid() {
                 })}
               </tbody>
             </table>
+            </div>
           </div>
         )}
 

@@ -106,7 +106,7 @@ export default function Login() {
       </div>
 
       {/* Right Panel - Login Form */}
-      <div className="w-full lg:w-1/2 flex flex-col justify-center p-8 sm:p-12 md:p-24 bg-white dark:bg-[#0b1120] relative transition-colors duration-200">
+      <div className="w-full lg:w-1/2 flex flex-col justify-center p-5 sm:p-12 md:p-24 bg-white dark:bg-[#0b1120] relative transition-colors duration-200">
         <motion.div 
           className="max-w-md w-full mx-auto"
           variants={containerVariants}

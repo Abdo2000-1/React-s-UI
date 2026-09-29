@@ -30,7 +30,7 @@ export default function PatientDetails() {
   const patientDocs = (allDocs || []).filter(d => d.patientName === patient.name);
 
   return (
-    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="p-6 space-y-6 max-w-7xl mx-auto">
+    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 max-w-7xl mx-auto w-full min-w-0">
       <button onClick={() => navigate('/patients')} className="flex items-center text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
         <ArrowLeft className="w-4 h-4 mr-2" />
         Back to Patients
@@ -60,8 +60,8 @@ export default function PatientDetails() {
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-gray-200 dark:border-gray-700">
-        <nav className="-mb-px flex space-x-8">
+      <div className="border-b border-gray-200 dark:border-gray-700 overflow-x-auto no-scrollbar">
+        <nav className="-mb-px flex space-x-6 sm:space-x-8 min-w-max pb-px">
           {(['overview', 'orders', 'cases', 'documents', 'activity'] as const).map((tab) => (
             <button
               key={tab}

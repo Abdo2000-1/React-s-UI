@@ -61,7 +61,7 @@ export default function Doctors() {
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="p-4 sm:p-6 space-y-6 max-w-7xl mx-auto">
+    <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 max-w-7xl mx-auto w-full min-w-0">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Doctors</h1>
@@ -113,8 +113,8 @@ export default function Doctors() {
             description="Try adjusting your search or filters."
           />
         ) : viewMode === 'table' ? (
-          <div className="w-full">
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[650px] text-sm text-left text-gray-500 dark:text-gray-400 divide-y divide-gray-200 dark:divide-gray-700">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
                 <tr>
                   <th className="px-4 py-3 cursor-pointer" onClick={() => handleSort('name')}>Doctor</th>

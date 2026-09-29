@@ -227,8 +227,8 @@ export default function Orders() {
       ) : (
         /* MODE 2: Responsive Adaptive Table */
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-          <div className="w-full">
-            <table className="w-full text-xs text-left text-gray-500 dark:text-gray-400">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[650px] text-xs text-left text-gray-500 dark:text-gray-400">
               <thead className="text-[11px] uppercase bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 border-b border-gray-200 dark:border-gray-800">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Order #</th>

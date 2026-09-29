@@ -16,11 +16,11 @@ export function Pagination({ page, currentPage, totalPages, totalCount, pageSize
   const end = Math.min(activePage * pageSize, count);
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--color-border)]">
-      <span className="text-xs text-[var(--color-foreground-muted)]">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 border-t border-[var(--color-border)]">
+      <span className="text-xs text-[var(--color-foreground-muted)] text-center sm:text-left">
         Showing {start}–{end} of {count}
       </span>
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 flex-wrap justify-center">
         <button
           onClick={() => onPageChange(activePage - 1)}
           disabled={activePage <= 1}

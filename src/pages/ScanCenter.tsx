@@ -43,7 +43,7 @@ export default function ScanCenter() {
   };
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto p-4 sm:p-6">
+    <div className="space-y-6 max-w-7xl mx-auto w-full min-w-0">
       <div>
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Scan Center</h1>
         <p className="text-gray-500 dark:text-gray-400 mt-1">Manage scan centers, devices, and incoming digital impressions</p>
@@ -128,8 +128,8 @@ export default function ScanCenter() {
             description="Adjust search query or check back later."
           />
         ) : viewMode === 'table' ? (
-          <div className="w-full">
-            <table className="w-full text-left divide-y divide-gray-200 dark:divide-gray-700">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full min-w-[700px] text-left divide-y divide-gray-200 dark:divide-gray-700">
               <thead>
                 <tr className="text-xs text-gray-500 dark:text-gray-400 uppercase bg-gray-50 dark:bg-gray-900">
                   <th className="px-4 py-3">Order #</th>
