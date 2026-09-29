@@ -655,10 +655,10 @@ export default function Reports() {
               <BarChart data={GROUPED_WEEKLY_BAR_DATA} barGap={1}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f0" opacity={0.2} />
                 <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#94a3b8' }} />
-                <Tooltip content={<CustomReportTooltip />} />
-                <Bar dataKey="valA" fill="#6366f1" radius={[3, 3, 0, 0]} />
-                <Bar dataKey="valB" fill="#00d8fe" radius={[3, 3, 0, 0]} />
-                <Bar dataKey="valC" fill="#f59e0b" radius={[3, 3, 0, 0]} />
+                <Tooltip cursor={false} content={<CustomReportTooltip />} />
+                <Bar dataKey="valA" fill="#6366f1" radius={[3, 3, 0, 0]} isAnimationActive={true} animationDuration={750} animationEasing="ease-out" />
+                <Bar dataKey="valB" fill="#00d8fe" radius={[3, 3, 0, 0]} isAnimationActive={true} animationDuration={750} animationEasing="ease-out" />
+                <Bar dataKey="valC" fill="#f59e0b" radius={[3, 3, 0, 0]} isAnimationActive={true} animationDuration={750} animationEasing="ease-out" />
               </BarChart>
             </ResponsiveContainer>
           </div>

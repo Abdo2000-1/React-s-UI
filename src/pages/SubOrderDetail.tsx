@@ -127,6 +127,7 @@ export default function SubOrderDetail() {
                   prev.includes(tooth) ? prev.filter((t) => t !== tooth) : [...prev, tooth]
                 );
               }}
+              onClearAll={() => setSelectedTeeth([])}
             />
             <div className="text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-100 dark:border-gray-700">
               Selected units ({selectedTeeth.length}): {selectedTeeth.map(t => `#${t}`).join(', ') || 'None'}

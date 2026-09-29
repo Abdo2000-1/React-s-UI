@@ -144,15 +144,19 @@ export function Sidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: Side
                   </svg>
                 </div>
               </div>
-              <div className="flex flex-col">
-                <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                  DentaLab
-                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-extrabold bg-cyan-500/15 text-cyan-600 dark:text-cyan-300 border border-cyan-500/30 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                    React 19
+              <div className="flex flex-col min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-base font-extrabold tracking-tight text-slate-900 dark:text-white">
+                    DentaLab
                   </span>
+                  <span className="px-1.5 py-0.5 rounded-full text-[9px] font-bold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/25 whitespace-nowrap shrink-0 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+                    v2.4
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium truncate">
+                  CAD/CAM Cloud Studio
                 </span>
-                <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">Pure Agentic CAD Studio</span>
               </div>
             </div>
 

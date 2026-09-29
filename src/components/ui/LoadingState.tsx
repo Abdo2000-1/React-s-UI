@@ -1,198 +1,139 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Activity, 
-  Sparkles, 
-  Cpu, 
-  Layers, 
-  Wifi, 
-  CheckCircle2, 
-  Scan,
-  Database
-} from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface LoadingStateProps {
   message?: string;
   text?: string;
   subtitle?: string;
   fullHeight?: boolean;
+  rowCount?: number;
+  showRows?: boolean;
 }
-
-const CAD_PIPELINE_STAGES = [
-  { step: '01', title: 'Reconstructing 3D DICOM Voxel Matrix', detail: 'Tessellating 2.4M point cloud vertices...', progress: 34 },
-  { step: '02', title: 'Detecting Finish Line & Margin Contours', detail: 'AI subgingival margin trace active at 10μm tolerance...', progress: 68 },
-  { step: '03', title: 'Virtual Articulator & Occlusal Clearance', detail: 'Dynamic antagonist collision check calibrated...', progress: 89 },
-  { step: '04', title: 'Streaming CAD/CAM Production Assets', detail: 'Readying 5-axis milling machine nesting toolpath...', progress: 99 },
-];
 
 export function LoadingState({
   message,
-  text = 'Dental CAD/CAM System Initializing...',
-  subtitle = 'Synchronizing real-time intraoral scans, margin lines, and clinical cases',
+  text = 'Loading Dental Workspace...',
+  subtitle = 'Please wait while we retrieve and synchronize the latest records',
   fullHeight = false,
+  rowCount = 8,
+  showRows = true,
 }: LoadingStateProps) {
   const displayMsg = message || text;
-  const [currentStageIdx, setCurrentStageIdx] = useState(0);
-
-  // Cycle through pipeline milestones automatically
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentStageIdx((prev) => (prev + 1) % CAD_PIPELINE_STAGES.length);
-    }, 1800);
-    return () => clearInterval(timer);
-  }, []);
-
-  const currentStage = CAD_PIPELINE_STAGES[currentStageIdx];
+  const rows = Array.from({ length: rowCount });
 
   return (
-    <div className={`flex flex-col items-center justify-center p-6 sm:p-10 select-none ${fullHeight ? 'min-h-[500px]' : 'py-12'}`}>
-      {/* 1. Futuristic Holographic 3D Tooth & Scanner Canvas */}
-      <div className="relative w-64 h-48 sm:w-80 sm:h-52 mb-6 flex items-center justify-center">
-        {/* Ambient Radial Laser Glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 via-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse pointer-events-none" />
+    <div
+      className={`w-full flex flex-col items-center justify-center p-3 sm:p-5 select-none ${
+        fullHeight ? 'min-h-[500px]' : ''
+      }`}
+    >
+      {/* 1. Sleek Minimalist Medical Spinner & Status Header */}
+      <div className="w-full flex flex-col items-center text-center mb-5">
+        <div className="relative w-12 h-12 mb-2.5 flex items-center justify-center">
+          {/* Soft Glow */}
+          <div className="absolute inset-0 bg-cyan-500/20 dark:bg-cyan-500/30 rounded-full blur-lg animate-pulse pointer-events-none" />
 
-        {/* Outer Orbit Coordinates Ring */}
-        <motion.div
-          className="absolute w-52 h-52 sm:w-60 sm:h-60 rounded-full border border-cyan-500/30 border-dashed"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-        />
+          {/* Outer Track */}
+          <div className="w-11 h-11 rounded-full border-2 border-slate-200 dark:border-slate-800" />
 
-        {/* Counter-rotating Inner Ring */}
-        <motion.div
-          className="absolute w-40 h-40 sm:w-48 sm:h-48 rounded-full border-2 border-transparent border-t-cyan-400 border-b-blue-500 opacity-60"
-          animate={{ rotate: -360 }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-        />
-
-        {/* 3D Anatomical Tooth Wireframe with Laser Scanner Sweep */}
-        <div className="relative w-28 h-36 flex items-center justify-center">
-          <svg viewBox="0 0 100 130" className="w-full h-full drop-shadow-[0_0_15px_rgba(6,182,212,0.6)]">
-            <defs>
-              <linearGradient id="wireframeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#00d8fe" />
-                <stop offset="50%" stopColor="#3b82f6" />
-                <stop offset="100%" stopColor="#a855f7" />
-              </linearGradient>
-              <linearGradient id="laserBeam" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="transparent" />
-                <stop offset="50%" stopColor="#00e5ff" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="transparent" />
-              </linearGradient>
-            </defs>
-
-            {/* Wireframe Tooth Contours (Crown + Roots) */}
-            <g stroke="url(#wireframeGrad)" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.9">
-              {/* Outer Crown Perimeter */}
-              <path d="M 22 55 C 16 75, 18 105, 30 120 C 40 128, 60 128, 70 120 C 82 105, 84 75, 78 55 C 72 38, 28 38, 22 55 Z" />
-              {/* Occlusal Cusp Ridges */}
-              <path d="M 30 115 C 42 110, 58 110, 70 115" strokeDasharray="3 3" />
-              <path d="M 50 125 L 50 85" strokeDasharray="4 4" />
-              <path d="M 32 90 C 45 80, 55 80, 68 90" />
-              {/* Cervical Margin (CEJ) */}
-              <path d="M 22 55 C 38 62, 62 62, 78 55" strokeWidth="2.4" stroke="#00e5ff" />
-              {/* Dual Anatomical Roots */}
-              <path d="M 24 55 C 22 35, 28 15, 36 6 C 42 16, 44 35, 48 55" />
-              <path d="M 52 55 C 56 35, 58 16, 64 6 C 72 15, 78 35, 76 55" />
-              {/* Transverse Cross Sections */}
-              <line x1="28" y1="35" x2="42" y2="35" strokeDasharray="2 2" />
-              <line x1="58" y1="35" x2="72" y2="35" strokeDasharray="2 2" />
-              <circle cx="50" cy="95" r="3" fill="#00e5ff" />
-            </g>
-
-            {/* Sweeping Laser Plane Line */}
-            <motion.rect
-              x="0"
-              width="100"
-              height="8"
-              fill="url(#laserBeam)"
-              animate={{ y: [0, 125, 0] }}
-              transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </svg>
-        </div>
-
-        {/* Floating Telemetry Coordinates */}
-        <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-slate-900/80 border border-cyan-500/30 text-[10px] font-mono text-cyan-400">
-          VOXELS: 2.4M
-        </div>
-        <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-slate-900/80 border border-purple-500/30 text-[10px] font-mono text-purple-400">
-          MESH: 10μm
-        </div>
-      </div>
-
-      {/* 2. Interactive Pipeline Milestone Progress Card */}
-      <div className="w-full max-w-lg bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-5 shadow-lg backdrop-blur-md space-y-3.5">
-        {/* Stage Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="flex h-2.5 w-2.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
-            </span>
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-cyan-600 dark:text-cyan-400">
-              STEP {currentStage.step} OF 04 • {currentStage.title}
-            </span>
-          </div>
-          <span className="text-xs font-mono font-extrabold text-slate-900 dark:text-white">
-            {currentStage.progress}%
-          </span>
-        </div>
-
-        {/* High-tech Multi-Segment Progress Bar */}
-        <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden relative">
+          {/* Rotating Spinner */}
           <motion.div
-            className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-600 rounded-full"
-            initial={{ width: '20%' }}
-            animate={{ width: `${currentStage.progress}%` }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="absolute w-11 h-11 rounded-full border-2 border-transparent border-t-cyan-500 border-r-blue-500"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 0.9, repeat: Infinity, ease: 'linear' }}
+          />
+
+          {/* Inner Medical Tooth Icon */}
+          <div className="absolute flex items-center justify-center text-cyan-600 dark:text-cyan-400">
+            <svg className="w-5 h-5 drop-shadow-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2C8.5 2 6 4 6 7.5C6 9.5 6.8 11.5 7.5 13.5C8.2 15.5 8.5 17.5 8 21.5C9.5 20.5 10.8 19 12 19C13.2 19 14.5 20.5 16 21.5C15.5 17.5 15.8 15.5 16.5 13.5C17.2 11.5 18 9.5 18 7.5C18 4 15.5 2 12 2Z" />
+            </svg>
+          </div>
+        </div>
+
+        <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100 tracking-tight">
+          {displayMsg}
+        </h3>
+        {subtitle && (
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 max-w-md leading-relaxed">
+            {subtitle}
+          </p>
+        )}
+
+        {/* Smooth Minimal Progress Bar */}
+        <div className="w-48 sm:w-72 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden relative mt-2.5 shadow-inner">
+          <motion.div
+            className="h-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 rounded-full"
+            animate={{
+              x: ['-100%', '160%'],
+            }}
+            transition={{
+              duration: 1.6,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            style={{ width: '65%' }}
           />
         </div>
+      </div>
 
-        {/* Live Detail String */}
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={currentStage.title}
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            className="text-xs text-slate-600 dark:text-slate-300 font-mono truncate"
-          >
-            &gt; {currentStage.detail}
-          </motion.p>
-        </AnimatePresence>
+      {/* 2. Full-Width Shimmering Skeleton Bars (Matching Image 3 & Table in Image 2) */}
+      {showRows && (
+        <div className="w-full space-y-2.5">
+          {rows.map((_, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.04 }}
+              className="group relative w-full h-11 sm:h-12 rounded-xl bg-slate-100/90 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/50 overflow-hidden flex items-center px-4 justify-between shadow-2xs"
+            >
+              {/* Continuous Smooth Wave Shimmer Effect sweeping across the row */}
+              <div 
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/80 dark:via-white/10 to-transparent animate-shimmer-sweep pointer-events-none"
+                style={{ width: '200%' }}
+              />
 
-        {/* Hardware Status Strip */}
-        <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-          <span className="flex items-center gap-1.5 text-emerald-500">
-            <Cpu size={12} /> GPU ACCELERATED
-          </span>
-          <span className="flex items-center gap-1.5 text-cyan-400">
-            <Wifi size={12} /> PACS SYNC: 14ms
-          </span>
-          <span className="flex items-center gap-1.5 text-purple-400">
-            <Database size={12} /> CLOUD CACHE
-          </span>
+              {/* Realistic Table Column Placeholders matching Image 2 */}
+              <div className="flex items-center gap-4 sm:gap-6 flex-1 min-w-0 pr-4">
+                {/* Col 1: Case # */}
+                <div 
+                  className="h-3.5 bg-slate-200/90 dark:bg-slate-700/70 rounded-md shrink-0 animate-pulse"
+                  style={{ width: `${65 + (idx % 3) * 10}px` }}
+                />
+                
+                {/* Col 2: Title */}
+                <div 
+                  className="h-3.5 bg-slate-200/80 dark:bg-slate-700/60 rounded-md shrink-0 hidden sm:block animate-pulse"
+                  style={{ width: `${110 + (idx % 4) * 20}px` }}
+                />
+
+                {/* Col 3: Patient / Doctor */}
+                <div 
+                  className="h-3.5 bg-slate-200/80 dark:bg-slate-700/60 rounded-md shrink-0 hidden md:block animate-pulse"
+                  style={{ width: `${90 + (idx % 2) * 25}px` }}
+                />
+
+                {/* Col 4: Clinic */}
+                <div 
+                  className="h-3.5 bg-slate-200/80 dark:bg-slate-700/60 rounded-md shrink-0 hidden lg:block animate-pulse"
+                  style={{ width: `${100 + (idx % 3) * 15}px` }}
+                />
+              </div>
+
+              {/* Right Column Badges */}
+              <div className="flex items-center gap-3 shrink-0">
+                {/* Status Pill */}
+                <div className="w-14 h-5 rounded-full bg-cyan-500/15 dark:bg-cyan-500/20 border border-cyan-500/20 animate-pulse" />
+                {/* Priority Dot */}
+                <div className="w-12 h-3.5 rounded-md bg-slate-200/90 dark:bg-slate-700/70 hidden sm:block animate-pulse" />
+                {/* Updated timestamp */}
+                <div className="w-10 h-3 rounded bg-slate-200/70 dark:bg-slate-800 hidden sm:block animate-pulse" />
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </div>
-
-      {/* 3. Shimmer Skeleton Rows Preview */}
-      <div className="w-full max-w-lg mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 opacity-70">
-        {[1, 2].map((i) => (
-          <div
-            key={i}
-            className="p-3.5 rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-white/40 dark:bg-slate-900/40 relative overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 dark:via-white/5 to-transparent animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
-            <div className="flex items-center justify-between mb-2">
-              <div className="w-20 h-3 bg-slate-200 dark:bg-slate-800 rounded animate-pulse" />
-              <div className="w-12 h-3 bg-cyan-500/20 rounded animate-pulse" />
-            </div>
-            <div className="w-28 h-4 bg-slate-300 dark:bg-slate-700 rounded animate-pulse mb-1.5" />
-            <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded animate-pulse" />
-          </div>
-        ))}
-      </div>
+      )}
     </div>
   );
 }

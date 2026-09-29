@@ -421,9 +421,25 @@ export default function Dashboard() {
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#374151" opacity={0.15} />
                     <XAxis dataKey="week" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#9ca3af' }} />
                     <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#9ca3af' }} />
-                    <Tooltip content={<CustomDashboardTooltip />} />
-                    <Bar dataKey="received" name="Received" fill="#3b82f6" radius={[6, 6, 0, 0]} />
-                    <Bar dataKey="completed" name="Completed" fill="#10b981" radius={[6, 6, 0, 0]} />
+                    <Tooltip cursor={false} content={<CustomDashboardTooltip />} />
+                    <Bar 
+                      dataKey="received" 
+                      name="Received" 
+                      fill="#3b82f6" 
+                      radius={[6, 6, 0, 0]} 
+                      isAnimationActive={true}
+                      animationDuration={800}
+                      animationEasing="ease-out"
+                    />
+                    <Bar 
+                      dataKey="completed" 
+                      name="Completed" 
+                      fill="#10b981" 
+                      radius={[6, 6, 0, 0]} 
+                      isAnimationActive={true}
+                      animationDuration={800}
+                      animationEasing="ease-out"
+                    />
                   </BarChart>
                 )}
               </ResponsiveContainer>

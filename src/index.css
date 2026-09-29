@@ -229,6 +229,16 @@
 ::-webkit-scrollbar-thumb { background: var(--color-foreground-subtle); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-foreground-muted); }
 
+/* Smooth Skeleton Shimmer Wave */
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmerSweep 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .sidebar-scrollbar::-webkit-scrollbar { width: 3px; }
 .sidebar-scrollbar::-webkit-scrollbar-thumb { background: var(--color-sidebar-muted); border-radius: 2px; }
 
