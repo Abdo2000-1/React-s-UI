@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Check, RotateCcw, Smile, Zap, Info, X, Activity
 } from 'lucide-react';
@@ -20,44 +19,44 @@ export interface ToothOdontoData {
 
 export const ODONTO_DATABASE: ToothOdontoData[] = [
   // --- UPPER ARCH (Maxillary Arch) ---
-  // Patient Right (UR: 1 to 8) - Displayed on Viewer's Left
+  // Patient Right (UR: 1 to 8) - Viewer's Left
   { universal: 1,  fdi: 18, code: '18', name: 'Upper Right 3rd Molar (Wisdom)', category: 'molar', arch: 'upper', quadrant: 'UR', isAnterior: false },
   { universal: 2,  fdi: 17, code: '17', name: 'Upper Right 2nd Molar', category: 'molar', arch: 'upper', quadrant: 'UR', isAnterior: false },
   { universal: 3,  fdi: 16, code: '16', name: 'Upper Right 1st Molar', category: 'molar', arch: 'upper', quadrant: 'UR', isAnterior: false },
-  { universal: 4,  fdi: 15, code: '15', name: 'Upper Right 2nd Premolar (Bicuspid)', category: 'premolar', arch: 'upper', quadrant: 'UR', isAnterior: false },
-  { universal: 5,  fdi: 14, code: '14', name: 'Upper Right 1st Premolar (2 Roots)', category: 'premolar', arch: 'upper', quadrant: 'UR', isAnterior: false },
+  { universal: 4,  fdi: 15, code: '15', name: 'Upper Right 2nd Premolar', category: 'premolar', arch: 'upper', quadrant: 'UR', isAnterior: false },
+  { universal: 5,  fdi: 14, code: '14', name: 'Upper Right 1st Premolar', category: 'premolar', arch: 'upper', quadrant: 'UR', isAnterior: false },
   { universal: 6,  fdi: 13, code: '13', name: 'Upper Right Canine (Cuspid)', category: 'canine', arch: 'upper', quadrant: 'UR', isAnterior: true },
   { universal: 7,  fdi: 12, code: '12', name: 'Upper Right Lateral Incisor', category: 'incisor_lat', arch: 'upper', quadrant: 'UR', isAnterior: true },
-  { universal: 8,  fdi: 11, code: '11', name: 'Upper Right Central Incisor (Midline)', category: 'incisor_cen', arch: 'upper', quadrant: 'UR', isAnterior: true },
+  { universal: 8,  fdi: 11, code: '11', name: 'Upper Right Central Incisor', category: 'incisor_cen', arch: 'upper', quadrant: 'UR', isAnterior: true },
 
-  // Patient Left (UL: 9 to 16) - Displayed on Viewer's Right
-  { universal: 9,  fdi: 21, code: '21', name: 'Upper Left Central Incisor (Midline)', category: 'incisor_cen', arch: 'upper', quadrant: 'UL', isAnterior: true },
+  // Patient Left (UL: 9 to 16) - Viewer's Right
+  { universal: 9,  fdi: 21, code: '21', name: 'Upper Left Central Incisor', category: 'incisor_cen', arch: 'upper', quadrant: 'UL', isAnterior: true },
   { universal: 10, fdi: 22, code: '22', name: 'Upper Left Lateral Incisor', category: 'incisor_lat', arch: 'upper', quadrant: 'UL', isAnterior: true },
   { universal: 11, fdi: 23, code: '23', name: 'Upper Left Canine (Cuspid)', category: 'canine', arch: 'upper', quadrant: 'UL', isAnterior: true },
-  { universal: 12, fdi: 24, code: '24', name: 'Upper Left 1st Premolar (2 Roots)', category: 'premolar', arch: 'upper', quadrant: 'UL', isAnterior: false },
-  { universal: 13, fdi: 25, code: '25', name: 'Upper Left 2nd Premolar (Bicuspid)', category: 'premolar', arch: 'upper', quadrant: 'UL', isAnterior: false },
+  { universal: 12, fdi: 24, code: '24', name: 'Upper Left 1st Premolar', category: 'premolar', arch: 'upper', quadrant: 'UL', isAnterior: false },
+  { universal: 13, fdi: 25, code: '25', name: 'Upper Left 2nd Premolar', category: 'premolar', arch: 'upper', quadrant: 'UL', isAnterior: false },
   { universal: 14, fdi: 26, code: '26', name: 'Upper Left 1st Molar', category: 'molar', arch: 'upper', quadrant: 'UL', isAnterior: false },
   { universal: 15, fdi: 27, code: '27', name: 'Upper Left 2nd Molar', category: 'molar', arch: 'upper', quadrant: 'UL', isAnterior: false },
   { universal: 16, fdi: 28, code: '28', name: 'Upper Left 3rd Molar (Wisdom)', category: 'molar', arch: 'upper', quadrant: 'UL', isAnterior: false },
 
   // --- LOWER ARCH (Mandibular Arch) ---
-  // Patient Right (LR: 32 to 25) - Displayed on Viewer's Left
+  // Patient Right (LR: 32 to 25) - Viewer's Left
   { universal: 32, fdi: 48, code: '48', name: 'Lower Right 3rd Molar (Wisdom)', category: 'molar', arch: 'lower', quadrant: 'LR', isAnterior: false },
   { universal: 31, fdi: 47, code: '47', name: 'Lower Right 2nd Molar', category: 'molar', arch: 'lower', quadrant: 'LR', isAnterior: false },
-  { universal: 30, fdi: 46, code: '46', name: 'Lower Right 1st Molar (2 Roots)', category: 'molar', arch: 'lower', quadrant: 'LR', isAnterior: false },
-  { universal: 29, fdi: 45, code: '45', name: 'Lower Right 2nd Premolar (1 Root)', category: 'premolar', arch: 'lower', quadrant: 'LR', isAnterior: false },
-  { universal: 28, fdi: 44, code: '44', name: 'Lower Right 1st Premolar (1 Root)', category: 'premolar', arch: 'lower', quadrant: 'LR', isAnterior: false },
+  { universal: 30, fdi: 46, code: '46', name: 'Lower Right 1st Molar', category: 'molar', arch: 'lower', quadrant: 'LR', isAnterior: false },
+  { universal: 29, fdi: 45, code: '45', name: 'Lower Right 2nd Premolar', category: 'premolar', arch: 'lower', quadrant: 'LR', isAnterior: false },
+  { universal: 28, fdi: 44, code: '44', name: 'Lower Right 1st Premolar', category: 'premolar', arch: 'lower', quadrant: 'LR', isAnterior: false },
   { universal: 27, fdi: 43, code: '43', name: 'Lower Right Canine (Cuspid)', category: 'canine', arch: 'lower', quadrant: 'LR', isAnterior: true },
   { universal: 26, fdi: 42, code: '42', name: 'Lower Right Lateral Incisor', category: 'incisor_lat', arch: 'lower', quadrant: 'LR', isAnterior: true },
-  { universal: 25, fdi: 41, code: '41', name: 'Lower Right Central Incisor (Midline)', category: 'incisor_cen', arch: 'lower', quadrant: 'LR', isAnterior: true },
+  { universal: 25, fdi: 41, code: '41', name: 'Lower Right Central Incisor', category: 'incisor_cen', arch: 'lower', quadrant: 'LR', isAnterior: true },
 
-  // Patient Left (LL: 24 to 17) - Displayed on Viewer's Right
-  { universal: 24, fdi: 31, code: '31', name: 'Lower Left Central Incisor (Midline)', category: 'incisor_cen', arch: 'lower', quadrant: 'LL', isAnterior: true },
+  // Patient Left (LL: 24 to 17) - Viewer's Right
+  { universal: 24, fdi: 31, code: '31', name: 'Lower Left Central Incisor', category: 'incisor_cen', arch: 'lower', quadrant: 'LL', isAnterior: true },
   { universal: 23, fdi: 32, code: '32', name: 'Lower Left Lateral Incisor', category: 'incisor_lat', arch: 'lower', quadrant: 'LL', isAnterior: true },
   { universal: 22, fdi: 33, code: '33', name: 'Lower Left Canine (Cuspid)', category: 'canine', arch: 'lower', quadrant: 'LL', isAnterior: true },
-  { universal: 21, fdi: 34, code: '34', name: 'Lower Left 1st Premolar (1 Root)', category: 'premolar', arch: 'lower', quadrant: 'LL', isAnterior: false },
-  { universal: 20, fdi: 35, code: '35', name: 'Lower Left 2nd Premolar (1 Root)', category: 'premolar', arch: 'lower', quadrant: 'LL', isAnterior: false },
-  { universal: 19, fdi: 36, code: '36', name: 'Lower Left 1st Molar (2 Roots)', category: 'molar', arch: 'lower', quadrant: 'LL', isAnterior: false },
+  { universal: 21, fdi: 34, code: '34', name: 'Lower Left 1st Premolar', category: 'premolar', arch: 'lower', quadrant: 'LL', isAnterior: false },
+  { universal: 20, fdi: 35, code: '35', name: 'Lower Left 2nd Premolar', category: 'premolar', arch: 'lower', quadrant: 'LL', isAnterior: false },
+  { universal: 19, fdi: 36, code: '36', name: 'Lower Left 1st Molar', category: 'molar', arch: 'lower', quadrant: 'LL', isAnterior: false },
   { universal: 18, fdi: 37, code: '37', name: 'Lower Left 2nd Molar', category: 'molar', arch: 'lower', quadrant: 'LL', isAnterior: false },
   { universal: 17, fdi: 38, code: '38', name: 'Lower Left 3rd Molar (Wisdom)', category: 'molar', arch: 'lower', quadrant: 'LL', isAnterior: false },
 ];
@@ -82,239 +81,428 @@ export const RESTORATION_TYPES: {
 ];
 
 /**
- * Anatomically authentic facial profile sketch:
- * - Upper Arch: Roots reach UP, Crown points DOWN towards occlusal line
- *   * Upper Molars (1, 2, 3, 14, 15, 16): Exactly 3 roots (Mesiobuccal, Distobuccal, Palatal)
- *   * Upper 1st Premolars (5, 12): Bifurcated 2 roots (Buccal & Palatal)
- *   * Upper 2nd Premolars (4, 13): 1 single tapered root
- *   * Upper Canines (6, 11): 1 massive long root
- *   * Upper Incisors (7, 8, 9, 10): 1 single straight conical root
- * - Lower Arch: Crown points UP towards occlusal line, Roots reach DOWN
- *   * Lower Molars (17, 18, 19, 30, 31, 32): Exactly 2 roots (Mesial & Distal) - NEVER 3!
- *   * Lower Premolars (20, 21, 28, 29): 1 single root
- *   * Lower Canines & Incisors (22-27): 1 single root
+ * Maps any tooth 1..32 to its master anatomical base shape (1..8 for upper, 25..32 for lower)
  */
-function AnatomicalToothSketch({
-  tooth,
+function getBaseToothNumber(num: number): number {
+  if (num >= 1 && num <= 8) return num;
+  if (num >= 9 && num <= 16) return 17 - num; // 9->8, 10->7, ... 16->1
+  if (num >= 25 && num <= 32) return num;
+  if (num >= 17 && num <= 24) return 49 - num; // 24->25, 23->26, ... 17->32
+  return 8;
+}
+
+/**
+ * Hand-drawn Clinical Dental Anatomy Silhouette
+ * EXACT 1:1 match to the user reference sketch:
+ * - Upper teeth (1-16): roots reach UP, crowns point DOWN towards occlusal line.
+ *   - Molars have 3 distinct roots (2 outer buccal + 1 center vertical palatal root) and 2 rounded occlusal lobes.
+ *   - Premolars have roots curving distally and oval crowns.
+ *   - Canines are tallest with towering roots and sharp cusps.
+ *   - Incisors have broad shovel crowns.
+ * - Lower teeth (32-17): crowns at TOP with occlusal fissures, roots reach DOWN.
+ *   - Molars have 2 distinct wishbone roots with a wide U-furcation arch.
+ *   - Canines have the deepest root and pointed cusp.
+ *   - Premolars have single tapered roots.
+ *   - Incisors have slender straight roots.
+ */
+function ClinicalToothSilhouette({
+  toothNumber,
   isSelected,
   restoration,
 }: {
-  tooth: ToothOdontoData;
+  toothNumber: number;
   isSelected: boolean;
   restoration?: RestorationType;
 }) {
-  const isUpper = tooth.arch === 'upper';
   const resInfo = RESTORATION_TYPES.find(r => r.id === restoration);
-  
-  // Strictly prevent restoration styles when unselected
-  const effectiveRestoration = isSelected ? restoration : undefined;
   const strokeColor = isSelected ? (resInfo?.color || '#00d8fe') : 'currentColor';
-  const fillColor = isSelected ? (resInfo ? `${resInfo.color}25` : 'rgba(0,216,254,0.18)') : 'transparent';
-  
-  const isImplant = Boolean(isSelected && effectiveRestoration === 'implant');
-  const isExtraction = Boolean(isSelected && effectiveRestoration === 'extraction');
+  const crownFill = isSelected ? (resInfo ? `${resInfo.color}25` : 'rgba(0,216,254,0.18)') : 'none';
+  const isImplant = Boolean(isSelected && restoration === 'implant');
+  const isExtraction = Boolean(isSelected && restoration === 'extraction');
 
-  // Upper 1st Premolar (teeth 5 & 12) uniquely has 2 roots
-  const isUpper1stPremolar = isUpper && (tooth.universal === 5 || tooth.universal === 12);
+  const isUpper = toothNumber >= 1 && toothNumber <= 16;
+  const isLeftQuadrant = (toothNumber >= 9 && toothNumber <= 16) || (toothNumber >= 17 && toothNumber <= 24);
+  const baseNumber = getBaseToothNumber(toothNumber);
+
+  const renderAnatomy = () => {
+    switch (baseNumber) {
+      // ==============================================================
+      // UPPER TEETH (Crown points DOWN towards midline, Roots reach UP)
+      // ==============================================================
+      case 8: // Central Incisor: Straight conical root, broad shovel crown
+        return (
+          <g>
+            {!isImplant && (
+              <path
+                d="M 15 52 C 16 38, 20 24, 24 14 C 25 12, 26 12, 27 14 C 31 24, 34 38, 35 52"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+            <path d="M 15 52 C 20 49, 30 49, 35 52" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            <path
+              d="M 15 52 C 13 62, 13 74, 15 82 C 17 84, 33 84, 35 82 C 37 74, 37 62, 35 52 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+          </g>
+        );
+
+      case 7: // Lateral Incisor: Slender root curving distally
+        return (
+          <g>
+            {!isImplant && (
+              <path
+                d="M 17 52 C 17 40, 18 28, 21 16 C 22 14, 25 14, 27 17 C 29 28, 32 40, 33 52"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+            <path d="M 17 52 C 21 49, 29 49, 33 52" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            <path
+              d="M 17 52 C 15 62, 15 74, 17 82 C 19 84, 31 84, 33 82 C 35 74, 35 62, 33 52 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+          </g>
+        );
+
+      case 6: // Canine: Tallest tooth, towering root reaching y=4, sharp cusp at bottom
+        return (
+          <g>
+            {!isImplant && (
+              <path
+                d="M 16 50 C 18 34, 21 16, 24 4 C 25 3, 26 3, 27 4 C 30 16, 33 34, 34 50"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+            <path d="M 16 50 C 21 47, 29 47, 34 50" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            <path
+              d="M 16 50 C 14 62, 15 72, 25 84 C 35 72, 36 62, 34 50 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <line x1="25" y1="52" x2="25" y2="80" stroke={strokeColor} strokeWidth="0.8" opacity="0.4" />
+          </g>
+        );
+
+      case 5: // 1st Premolar: Root curves distally
+      case 4: // 2nd Premolar
+        return (
+          <g>
+            {!isImplant && (
+              <path
+                d="M 16 52 C 15 40, 17 26, 22 16 C 24 14, 27 14, 29 17 C 31 26, 33 40, 34 52"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+            <path d="M 16 52 C 21 49, 29 49, 34 52" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            <path
+              d="M 15 52 C 12 62, 13 74, 18 82 C 21 84, 29 84, 32 82 C 37 74, 38 62, 35 52 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+          </g>
+        );
+
+      case 3: // 1st Molar: 3 roots (2 outer buccal + 1 vertical palatal in center cleft)
+        return (
+          <g>
+            {!isImplant && (
+              <g stroke={strokeColor} strokeWidth={isSelected ? '2' : '1.5'} fill="none">
+                {/* Center Palatal Root rising between outer roots */}
+                <path d="M 21 42 C 22 26, 24 12, 25.5 10 C 27 12, 29 26, 30 42" />
+                {/* Outer Left Buccal Root */}
+                <path d="M 8 52 C 7 38, 9 24, 12 16 C 14 16, 16 22, 17 34 C 18 42, 20 46, 22 48" />
+                {/* Outer Right Buccal Root */}
+                <path d="M 29 48 C 31 46, 33 42, 34 34 C 35 22, 37 16, 39 16 C 42 24, 44 38, 43 52" />
+              </g>
+            )}
+            <path d="M 8 52 C 18 49, 33 49, 43 52" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {/* Wide crown with two distinct rounded lobes at bottom */}
+            <path
+              d="M 8 52 C 6 63, 8 75, 14 82 C 17 84, 22 82, 25.5 78 C 29 82, 34 84, 37 82 C 43 75, 45 63, 43 52 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <line x1="25.5" y1="68" x2="25.5" y2="78" stroke={strokeColor} strokeWidth="1" strokeLinecap="round" />
+          </g>
+        );
+
+      case 2: // 2nd Molar: 3 roots
+        return (
+          <g>
+            {!isImplant && (
+              <g stroke={strokeColor} strokeWidth={isSelected ? '2' : '1.5'} fill="none">
+                <path d="M 21 42 C 22 28, 24 14, 25.5 12 C 27 14, 29 28, 30 42" />
+                <path d="M 9 52 C 8 39, 10 25, 13 18 C 15 18, 17 24, 18 35 C 19 42, 20 46, 22 48" />
+                <path d="M 29 48 C 31 46, 32 42, 33 35 C 34 24, 36 18, 38 18 C 41 25, 43 39, 42 52" />
+              </g>
+            )}
+            <path d="M 9 52 C 19 49, 32 49, 42 52" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            <path
+              d="M 9 52 C 7 63, 9 75, 15 82 C 18 84, 22 82, 25.5 78 C 29 82, 33 84, 36 82 C 42 75, 44 63, 42 52 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <line x1="25.5" y1="68" x2="25.5" y2="78" stroke={strokeColor} strokeWidth="1" strokeLinecap="round" />
+          </g>
+        );
+
+      case 1: // 3rd Molar: Converging roots
+        return (
+          <g>
+            {!isImplant && (
+              <path
+                d="M 11 52 C 10 40, 12 26, 16 18 C 18 18, 20 26, 22 36 C 24 42, 27 42, 29 36 C 31 26, 33 18, 35 18 C 39 26, 41 40, 40 52"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+            <path d="M 11 52 C 20 49, 31 49, 40 52" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            <path
+              d="M 11 52 C 9 63, 11 74, 16 81 C 19 83, 23 81, 25.5 78 C 28 81, 32 83, 35 81 C 40 74, 42 63, 40 52 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+          </g>
+        );
+
+      // ==============================================================
+      // LOWER TEETH (Crown at top facing midline, Roots reach DOWN)
+      // ==============================================================
+      case 25: // Central Incisor: Narrow flat crown, slender straight root
+        return (
+          <g>
+            <path
+              d="M 18 44 C 17 34, 17 24, 19 16 C 20 14, 30 14, 31 16 C 33 24, 33 34, 32 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <path d="M 18 44 C 22 47, 28 47, 32 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {!isImplant && (
+              <path
+                d="M 18 44 C 18 58, 21 73, 24 85 C 25 86, 26 86, 27 85 C 29 73, 32 58, 32 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      case 26: // Lateral Incisor
+        return (
+          <g>
+            <path
+              d="M 17 44 C 16 34, 16 23, 18 15 C 19 13, 31 13, 32 15 C 34 23, 34 34, 33 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <path d="M 17 44 C 22 47, 28 47, 33 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {!isImplant && (
+              <path
+                d="M 17 44 C 17 58, 20 74, 24 87 C 25 88, 26 88, 27 87 C 30 74, 33 58, 33 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      case 27: // Canine: Longest lower tooth, sharp cusp at top, deepest root down to y=95
+        return (
+          <g>
+            <path
+              d="M 16 44 C 14 33, 16 22, 25 8 C 34 22, 36 33, 34 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <line x1="25" y1="10" x2="25" y2="40" stroke={strokeColor} strokeWidth="0.8" opacity="0.4" />
+            <path d="M 16 44 C 21 47, 29 47, 34 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {!isImplant && (
+              <path
+                d="M 16 44 C 17 60, 21 80, 24 95 C 25 96, 26 96, 27 95 C 29 80, 33 60, 34 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      case 28: // 1st Premolar
+      case 29: // 2nd Premolar
+        return (
+          <g>
+            <path
+              d="M 15 44 C 12 34, 14 22, 19 16 C 22 14, 28 14, 31 16 C 36 22, 38 34, 35 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <path d="M 15 44 C 20 47, 29 47, 35 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {!isImplant && (
+              <path
+                d="M 15 44 C 16 57, 19 72, 24 82 C 25 83, 26 83, 27 82 C 31 72, 34 57, 35 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      case 30: // 1st Molar: Wide crown with occlusal fissures, 2 BIFURCATED WISHBONE ROOTS with U-furcation
+        return (
+          <g>
+            <path
+              d="M 8 44 C 6 34, 7 22, 13 16 C 17 12, 21 14, 25 17 C 28 14, 32 12, 36 16 C 42 22, 43 34, 41 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <path
+              d="M 25 17 L 25 26 C 21 26, 16 29, 14 32 M 25 26 C 29 26, 34 29, 36 32"
+              stroke={strokeColor}
+              strokeWidth="1"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path d="M 8 44 C 18 47, 31 47, 41 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {/* TWO WISHBONE ROOTS WITH U-FURCATION ARCH */}
+            {!isImplant && (
+              <path
+                d="M 8 44 C 8 58, 10 72, 13 84 C 15 85, 17 84, 18 80 C 19 72, 21 62, 22 54 C 23 50, 27 50, 28 54 C 29 62, 31 72, 32 80 C 33 84, 35 85, 37 84 C 40 72, 41 58, 41 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      case 31: // 2nd Molar: 2 roots with arch
+        return (
+          <g>
+            <path
+              d="M 9 44 C 7 34, 8 22, 14 16 C 18 13, 21 15, 25 17 C 28 15, 31 13, 35 16 C 41 22, 42 34, 40 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <path
+              d="M 25 17 L 25 26 C 21 26, 17 29, 15 32 M 25 26 C 29 26, 33 29, 35 32"
+              stroke={strokeColor}
+              strokeWidth="1"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path d="M 9 44 C 19 47, 30 47, 40 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {!isImplant && (
+              <path
+                d="M 9 44 C 9 58, 11 71, 14 83 C 16 84, 17 83, 18 79 C 19 71, 21 61, 22 54 C 23 51, 27 51, 28 54 C 29 61, 31 71, 32 79 C 33 83, 34 84, 36 83 C 38 71, 40 58, 40 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      case 32: // 3rd Molar: Wisdom
+        return (
+          <g>
+            <path
+              d="M 11 44 C 9 34, 10 23, 16 17 C 19 15, 22 16, 25 18 C 27 16, 30 15, 33 17 C 39 23, 40 34, 38 44 Z"
+              stroke={strokeColor}
+              strokeWidth={isSelected ? '2.2' : '1.6'}
+              fill={crownFill}
+            />
+            <path d="M 11 44 C 20 47, 29 47, 38 44" stroke={strokeColor} strokeWidth="1.2" opacity="0.8" fill="none" />
+            {!isImplant && (
+              <path
+                d="M 11 44 C 10 56, 11 69, 14 78 C 16 79, 18 78, 19 74 C 20 66, 21 58, 22 54 C 23 52, 27 52, 28 54 C 29 58, 30 66, 31 74 C 32 78, 34 79, 36 78 C 38 69, 39 56, 38 44"
+                stroke={strokeColor}
+                strokeWidth={isSelected ? '2' : '1.5'}
+                fill="none"
+              />
+            )}
+          </g>
+        );
+
+      default:
+        return null;
+    }
+  };
 
   return (
-    <svg viewBox="0 0 34 84" className="w-full h-full overflow-visible drop-shadow-xs" fill="none">
-      {/* ============================================================ */}
-      {/* 1. UPPER TEETH: Roots reach UP, Crown points DOWN (to y=76)  */}
-      {/* ============================================================ */}
-      {isUpper ? (
-        <g opacity={isExtraction ? 0.35 : 1}>
-          {/* ROOTS (Pointing Upwards towards Maxillary Sinus) */}
-          {isImplant ? (
-            /* Titanium Implant Screw Fixture */
-            <g stroke="#f59e0b" strokeWidth="1.4">
-              <line x1="17" y1="8" x2="17" y2="44" stroke="#f59e0b" strokeWidth="2.5" />
-              <line x1="12" y1="14" x2="22" y2="16" />
-              <line x1="12" y1="20" x2="22" y2="22" />
-              <line x1="12" y1="26" x2="22" y2="28" />
-              <line x1="12" y1="32" x2="22" y2="34" />
-              <line x1="12" y1="38" x2="22" y2="40" />
-              <polygon points="17,6 13,11 21,11" fill="#f59e0b" />
-            </g>
-          ) : tooth.category === 'molar' ? (
-            /* Upper Molar: STRICTLY 3 ROOTS (Mesiobuccal, Palatal, Distobuccal) */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2' : '1.4'} fill={fillColor}>
-              {/* Mesiobuccal Root (curving left) */}
-              <path d="M 8 46 C 7 32, 7 18, 9 7 C 11 14, 13 28, 14 44" />
-              {/* Palatal Root (longest, central) */}
-              <path d="M 14 44 C 15 28, 16 14, 17 5 C 18 14, 19 28, 20 44" />
-              {/* Distobuccal Root (curving right) */}
-              <path d="M 20 44 C 21 28, 23 18, 25 7 C 27 18, 27 32, 26 46" />
-            </g>
-          ) : isUpper1stPremolar ? (
-            /* Upper 1st Premolar (Teeth 5, 12): STRICTLY 2 ROOTS (Bifurcated) */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2' : '1.4'} fill={fillColor}>
-              <path d="M 9 46 C 8 32, 10 18, 12 8 C 14 18, 15 32, 16 45" />
-              <path d="M 18 45 C 19 32, 20 18, 22 8 C 24 18, 26 32, 25 46" />
-            </g>
-          ) : tooth.category === 'premolar' ? (
-            /* Upper 2nd Premolar (Teeth 4, 13): 1 SINGLE TAPERED ROOT */
-            <path
-              d="M 10 46 C 9 32, 12 16, 17 8 C 22 16, 25 32, 24 46 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          ) : tooth.category === 'canine' ? (
-            /* Upper Canine: 1 Massive Long Root (Longest in the mouth) */
-            <path
-              d="M 9 46 C 8 30, 13 12, 17 4 C 21 12, 26 30, 25 46 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          ) : tooth.category === 'incisor_cen' ? (
-            /* Central Incisor: Straight wide root */
-            <path
-              d="M 9 46 C 8 32, 12 16, 17 7 C 22 16, 26 32, 25 46 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          ) : (
-            /* Lateral Incisor: Slender root */
-            <path
-              d="M 11 46 C 10 32, 13 18, 17 9 C 21 18, 24 32, 23 46 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          )}
+    <svg viewBox="0 0 50 100" className="w-full h-full overflow-visible text-slate-900 dark:text-slate-100" fill="none">
+      <g opacity={isExtraction ? 0.35 : 1}>
+        {/* If tooth is in left quadrant, mirror horizontally across center x=25 */}
+        {isLeftQuadrant ? (
+          <g transform="translate(50, 0) scale(-1, 1)">
+            {renderAnatomy()}
+          </g>
+        ) : (
+          renderAnatomy()
+        )}
 
-          {/* CEJ Cervical Line (Gingival Margin) */}
-          <path
-            d="M 7 46 C 12 43, 22 43, 27 46"
-            stroke={strokeColor}
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            opacity="0.8"
-          />
-
-          {/* CROWN (Pointing Down towards Occlusal Line) */}
-          {tooth.category === 'molar' ? (
-            /* Upper Molar Crown: Multi-cusped */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 6 46 C 5 56, 6 68, 9 73 C 13 77, 21 77, 25 73 C 28 68, 29 56, 28 46 C 22 45, 12 45, 6 46 Z" />
-              <path d="M 11 72 C 14 74, 20 74, 23 72" strokeWidth="1" strokeLinecap="round" />
-            </g>
-          ) : tooth.category === 'premolar' ? (
-            /* Upper Premolar Crown */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 8 46 C 7 56, 8 68, 11 73 C 14 76, 20 76, 23 73 C 26 68, 27 56, 26 46 Z" />
-              <path d="M 13 72 C 15 74, 19 74, 21 72" strokeWidth="1" strokeLinecap="round" />
-            </g>
-          ) : tooth.category === 'canine' ? (
-            /* Upper Canine Crown: Pointed Cusp Apex */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 8 46 C 7 55, 9 66, 17 76 C 25 66, 27 55, 26 46 Z" />
-              <line x1="17" y1="48" x2="17" y2="72" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+        {/* TITANIUM IMPLANT SCREW FIXTURE */}
+        {isImplant && (
+          isUpper ? (
+            /* Upper Implant (Points UP into alveolar bone) */
+            <g stroke="#f59e0b" strokeWidth="1.8" fill="none">
+              <path d="M 22 10 L 28 10 L 29 50 L 21 50 Z" fill="#f59e0b" fillOpacity="0.15" />
+              <line x1="25" y1="8" x2="25" y2="50" stroke="#f59e0b" strokeWidth="2.5" />
+              <line x1="18" y1="16" x2="32" y2="19" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="23" x2="32" y2="26" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="30" x2="32" y2="33" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="37" x2="32" y2="40" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="44" x2="32" y2="47" strokeWidth="2" strokeLinecap="round" />
+              <polygon points="25,5 20,11 30,11" fill="#f59e0b" />
+              <rect x="20" y="48" width="10" height="4" rx="1" fill="#f59e0b" />
             </g>
           ) : (
-            /* Upper Incisor Crown: Broad chisel incisal edge */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 7 46 C 7 56, 8 68, 10 75 C 13 77, 21 77, 24 75 C 26 68, 27 56, 27 46 Z" />
-              <line x1="12" y1="60" x2="12" y2="74" strokeWidth="0.8" opacity="0.4" />
-              <line x1="22" y1="60" x2="22" y2="74" strokeWidth="0.8" opacity="0.4" />
+            /* Lower Implant (Points DOWN into mandibular bone) */
+            <g stroke="#f59e0b" strokeWidth="1.8" fill="none">
+              <path d="M 21 46 L 29 46 L 28 88 L 22 88 Z" fill="#f59e0b" fillOpacity="0.15" />
+              <line x1="25" y1="46" x2="25" y2="90" stroke="#f59e0b" strokeWidth="2.5" />
+              <line x1="18" y1="52" x2="32" y2="49" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="59" x2="32" y2="56" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="66" x2="32" y2="63" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="73" x2="32" y2="70" strokeWidth="2" strokeLinecap="round" />
+              <line x1="18" y1="80" x2="32" y2="77" strokeWidth="2" strokeLinecap="round" />
+              <polygon points="25,95 20,89 30,89" fill="#f59e0b" />
+              <rect x="20" y="44" width="10" height="4" rx="1" fill="#f59e0b" />
             </g>
-          )}
-        </g>
-      ) : (
-        /* ============================================================ */
-        /* 2. LOWER TEETH: Crown points UP, Roots reach DOWN (to y=78)  */
-        /* ============================================================ */
-        <g opacity={isExtraction ? 0.35 : 1}>
-          {/* CROWN (Pointing Upwards towards Occlusal Line) */}
-          {tooth.category === 'molar' ? (
-            /* Lower Molar Crown */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 6 38 C 5 28, 6 16, 9 11 C 13 7, 21 7, 25 11 C 28 16, 29 28, 28 38 C 22 39, 12 39, 6 38 Z" />
-              <path d="M 11 12 C 14 10, 20 10, 23 12" strokeWidth="1" strokeLinecap="round" />
-            </g>
-          ) : tooth.category === 'premolar' ? (
-            /* Lower Premolar Crown */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 8 38 C 7 28, 8 16, 11 11 C 14 8, 20 8, 23 11 C 26 16, 27 28, 26 38 Z" />
-            </g>
-          ) : tooth.category === 'canine' ? (
-            /* Lower Canine Crown: Pointed apex */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 8 38 C 7 29, 9 18, 17 8 C 25 18, 27 29, 26 38 Z" />
-              <line x1="17" y1="36" x2="17" y2="12" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
-            </g>
-          ) : (
-            /* Lower Incisor Crown: Slender chisel edge */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2.2' : '1.5'} fill={fillColor}>
-              <path d="M 8 38 C 8 28, 9 16, 11 9 C 13 7, 21 7, 23 9 C 25 16, 26 28, 26 38 Z" />
-            </g>
-          )}
+          )
+        )}
+      </g>
 
-          {/* CEJ Cervical Line */}
-          <path
-            d="M 7 38 C 12 41, 22 41, 27 38"
-            stroke={strokeColor}
-            strokeWidth="1.2"
-            strokeLinecap="round"
-            opacity="0.8"
-          />
-
-          {/* ROOTS (Pointing Downwards into Mandible) */}
-          {isImplant ? (
-            /* Titanium Implant Screw Fixture */
-            <g stroke="#f59e0b" strokeWidth="1.4">
-              <line x1="17" y1="40" x2="17" y2="76" stroke="#f59e0b" strokeWidth="2.5" />
-              <line x1="12" y1="46" x2="22" y2="44" />
-              <line x1="12" y1="52" x2="22" y2="50" />
-              <line x1="12" y1="58" x2="22" y2="56" />
-              <line x1="12" y1="64" x2="22" y2="62" />
-              <line x1="12" y1="70" x2="22" y2="68" />
-              <polygon points="17,78 13,73 21,73" fill="#f59e0b" />
-            </g>
-          ) : tooth.category === 'molar' ? (
-            /* Lower Molar: STRICTLY 2 DISTINCT SEPARATE ROOTS (Mesial & Distal) - NEVER 3 */
-            <g stroke={strokeColor} strokeWidth={isSelected ? '2' : '1.4'} fill={fillColor}>
-              {/* Mesial Root (Left) */}
-              <path d="M 7 38 C 6 50, 7 66, 10 78 C 12 78, 13.5 74, 14.5 62 C 15 54, 15 44, 14 38 Z" />
-              {/* Distal Root (Right) */}
-              <path d="M 20 38 C 19 44, 19 54, 19.5 62 C 20 74, 22 78, 24 76 C 27 66, 28 50, 27 38 Z" />
-            </g>
-          ) : tooth.category === 'premolar' ? (
-            /* Lower Premolars (20, 21, 28, 29): STRICTLY 1 SINGLE TAPERED ROOT */
-            <path
-              d="M 10 38 C 9 50, 13 68, 17 76 C 21 68, 25 50, 24 38 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          ) : tooth.category === 'canine' ? (
-            /* Lower Canine: Long single root */
-            <path
-              d="M 9 38 C 8 50, 13 70, 17 80 C 21 70, 26 50, 25 38 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          ) : (
-            /* Lower Incisor: Slender single root */
-            <path
-              d="M 11 38 C 10 50, 13 68, 17 76 C 21 68, 24 50, 23 38 Z"
-              stroke={strokeColor}
-              strokeWidth={isSelected ? '2' : '1.4'}
-              fill={fillColor}
-            />
-          )}
-        </g>
-      )}
-
-      {/* Extraction Cross Indicator (Only when selected and procedure is extraction) */}
+      {/* EXTRACTION / MISSING CROSS (Exact surgical X mark) */}
       {isExtraction && (
-        <g stroke="#f43f5e" strokeWidth="2.5" strokeLinecap="round">
-          <line x1="5" y1="12" x2="29" y2="72" />
-          <line x1="29" y1="12" x2="5" y2="72" />
+        <g stroke="#f43f5e" strokeWidth="3" strokeLinecap="round">
+          <line x1="8" y1="12" x2="42" y2="88" />
+          <line x1="42" y1="12" x2="8" y2="88" />
         </g>
       )}
     </svg>
@@ -344,7 +532,6 @@ export function TeethChart({
   onAssignRestoration,
   onClearAll,
   readonly = false,
-  activeService,
   showToolbar = true,
   className = ''
 }: TeethChartProps) {
@@ -401,7 +588,7 @@ export function TeethChart({
     });
   };
 
-  const renderToothUnit = (tooth: ToothOdontoData) => {
+  const renderToothCard = (tooth: ToothOdontoData, arch: 'upper' | 'lower') => {
     const isSelected = activeSelected.includes(tooth.universal);
     const assignedRes = isSelected ? (toothRestorations[tooth.universal] || selectedTool) : undefined;
     const displayNum = system === 'universal' ? tooth.universal : tooth.fdi;
@@ -418,23 +605,45 @@ export function TeethChart({
             : 'hover:bg-slate-100/80 dark:hover:bg-slate-800/60'
         }`}
       >
-        {/* Anatomical Sketch with Crown & Root */}
-        <div className="w-7 sm:w-8 h-16 sm:h-20 flex items-center justify-center transition-transform group-hover:scale-105">
-          <AnatomicalToothSketch
-            tooth={tooth}
-            isSelected={isSelected}
-            restoration={assignedRes}
-          />
-        </div>
+        {/* Upper teeth: Silhouette first, then number directly below it (meeting occlusal cross) */}
+        {arch === 'upper' && (
+          <>
+            <div className="w-8 sm:w-10 h-22 sm:h-26 flex items-center justify-center transition-transform group-hover:scale-105">
+              <ClinicalToothSilhouette
+                toothNumber={tooth.universal}
+                isSelected={isSelected}
+                restoration={assignedRes}
+              />
+            </div>
+            <span className={`text-[12px] font-mono font-bold px-1.5 py-0.5 mt-0.5 rounded transition-colors ${
+              isSelected
+                ? 'bg-cyan-500 text-slate-950 font-black shadow-xs'
+                : 'text-slate-800 dark:text-slate-200 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'
+            }`}>
+              {displayNum}
+            </span>
+          </>
+        )}
 
-        {/* Tooth Number on the Occlusal Margin */}
-        <span className={`text-[11px] font-mono font-bold px-1.5 py-0.5 rounded transition-colors ${
-          isSelected
-            ? 'bg-cyan-500 text-slate-950 font-black shadow-xs'
-            : 'text-slate-600 dark:text-slate-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'
-        }`}>
-          {displayNum}
-        </span>
+        {/* Lower teeth: Number first (meeting occlusal cross), then Silhouette below it */}
+        {arch === 'lower' && (
+          <>
+            <span className={`text-[12px] font-mono font-bold px-1.5 py-0.5 mb-0.5 rounded transition-colors ${
+              isSelected
+                ? 'bg-indigo-500 text-white font-black shadow-xs'
+                : 'text-slate-800 dark:text-slate-200 group-hover:text-indigo-600 dark:group-hover:text-indigo-400'
+            }`}>
+              {displayNum}
+            </span>
+            <div className="w-8 sm:w-10 h-22 sm:h-26 flex items-center justify-center transition-transform group-hover:scale-105">
+              <ClinicalToothSilhouette
+                toothNumber={tooth.universal}
+                isSelected={isSelected}
+                restoration={assignedRes}
+              />
+            </div>
+          </>
+        )}
       </div>
     );
   };
@@ -457,7 +666,7 @@ export function TeethChart({
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Universal Numbering System • Anatomically verified roots (2 roots for lower molars, 3 roots for upper molars).
+              Universal Numbering System • Classical 4-Quadrant Anatomical Odontogram Grid.
             </p>
           </div>
 
@@ -565,144 +774,91 @@ export function TeethChart({
         </div>
       )}
 
-      {/* ODONTOGRAM CROSS GRID (UNIVERSAL NUMBERING & QUADRANTS) */}
+      {/* EXACT 4-QUADRANT DENTAL ARCH GRID (MATCHING REFERENCE SKETCH 1:1) */}
       <div className="py-6 overflow-x-auto">
-        <div className="min-w-[660px] max-w-4xl mx-auto space-y-3">
+        <div className="min-w-[700px] max-w-4xl mx-auto space-y-3">
           
-          {/* 1. UPPER QUADRANTS LABEL STRIP */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center text-xs">
-            {/* Upper Right Quadrant (Patient Right, Viewer Left) */}
-            <div className="flex items-center justify-between pb-1.5 px-1 border-b border-slate-200/80 dark:border-slate-800">
-              <div className="flex items-center gap-1.5">
-                <span className="px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono font-extrabold text-[11px] border border-cyan-500/20">
-                  UR
-                </span>
-                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                  Maxillary Right (يمين المريض العلوي)
-                </span>
-              </div>
-              <span className="text-[10px] font-mono text-slate-400 font-bold">#1 ➔ #8</span>
+          {/* 1. TOP QUADRANT LABELS */}
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center text-xs font-bold text-slate-600 dark:text-slate-300 px-2 pb-1">
+            <div className="flex items-center justify-between pr-4">
+              <span className="px-2 py-0.5 rounded-md bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 font-mono text-[11px] border border-cyan-500/20">
+                UR • Maxillary Right
+              </span>
+              <span className="text-[10px] font-mono text-slate-400">#1 ➔ #8</span>
             </div>
-
-            {/* Midline Spacer */}
-            <div className="w-12 flex justify-center text-[10px] font-mono text-slate-400 font-bold shrink-0">
-              |
-            </div>
-
-            {/* Upper Left Quadrant (Patient Left, Viewer Right) */}
-            <div className="flex items-center justify-between pb-1.5 px-1 border-b border-slate-200/80 dark:border-slate-800">
-              <span className="text-[10px] font-mono text-slate-400 font-bold">#9 ➔ #16</span>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                  Maxillary Left (يسار المريض العلوي)
-                </span>
-                <span className="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 font-mono font-extrabold text-[11px] border border-blue-500/20">
-                  UL
-                </span>
-              </div>
+            <div className="w-8 flex justify-center text-slate-400 font-mono text-xs">│</div>
+            <div className="flex items-center justify-between pl-4">
+              <span className="text-[10px] font-mono text-slate-400">#9 ➔ #16</span>
+              <span className="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 font-mono text-[11px] border border-blue-500/20">
+                UL • Maxillary Left
+              </span>
             </div>
           </div>
 
-          {/* 2. UPPER JAW (MAXILLA) - ROOTS POINT UP */}
-          <div className="relative">
-            <div className="grid grid-cols-[1fr_auto_1fr] items-end">
-              {/* Upper Right (UR 1 to 8: left to right) */}
+          {/* 2. THE 4-QUADRANT CROSS CANVAS (1:1 Reference Drawing) */}
+          <div className="relative border border-slate-200 dark:border-slate-800 rounded-3xl p-4 sm:p-6 bg-slate-50/50 dark:bg-slate-900/40 shadow-inner">
+            
+            {/* UPPER ROW: TEETH THEN NUMBERS DIRECTLY BELOW */}
+            <div className="grid grid-cols-[1fr_auto_1fr] items-end pb-2">
               <div className="grid grid-cols-8 gap-0.5 sm:gap-1">
-                {upperRight.map(renderToothUnit)}
+                {upperRight.map(t => renderToothCard(t, 'upper'))}
               </div>
 
-              {/* Central Vertical Midline Axis Separator */}
-              <div className="w-12 h-full relative flex items-center justify-center shrink-0">
-                <div className="absolute inset-y-0 w-px bg-slate-300 dark:bg-slate-700" />
-                <span className="relative z-10 whitespace-nowrap px-1.5 py-0.5 text-[10px] font-mono font-black tracking-tight text-cyan-600 dark:text-cyan-400 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 shadow-2xs select-none">
-                  8 | 9
-                </span>
+              {/* Vertical Midline (Top half, passing between #8 and #9) */}
+              <div className="w-8 h-full flex items-center justify-center">
+                <div className="w-[1.5px] h-full bg-slate-900 dark:bg-slate-200 rounded-full" />
               </div>
 
-              {/* Upper Left (UL 9 to 16: left to right) */}
               <div className="grid grid-cols-8 gap-0.5 sm:gap-1">
-                {upperLeft.map(renderToothUnit)}
+                {upperLeft.map(t => renderToothCard(t, 'upper'))}
               </div>
             </div>
-          </div>
 
-          {/* 3. CENTRAL OCCLUSAL CROSS AXIS (Patient Right ---------|--------- Patient Left) */}
-          <div className="relative flex items-center justify-between py-2 my-1">
-            <div className="flex items-center gap-2 pl-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-cyan-500 shadow-sm shadow-cyan-500/50" />
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
-                PATIENT RIGHT (يمين المريض)
+            {/* SOLID HORIZONTAL OCCLUSAL CROSS LINE WITH 'Right' AND 'Left' */}
+            <div className="relative flex items-center justify-between my-2">
+              <span className="text-sm font-semibold text-slate-900 dark:text-white pl-1 shrink-0 select-none">
+                Right
+              </span>
+              <div className="flex-1 h-[1.5px] bg-slate-900 dark:bg-slate-200 mx-3 relative flex items-center justify-center">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 ring-4 ring-white dark:ring-slate-900" />
+              </div>
+              <span className="text-sm font-semibold text-slate-900 dark:text-white pr-1 shrink-0 select-none">
+                Left
               </span>
             </div>
 
-            <div className="flex-1 h-0.5 bg-gradient-to-r from-cyan-500/40 via-slate-300 dark:via-slate-700 to-blue-500/40 mx-4 relative flex items-center justify-center">
-              <span className="px-3 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-300 dark:border-slate-700 shadow-2xs">
-                MIDLINE • خط المنتصف
-              </span>
+            {/* LOWER ROW: NUMBERS DIRECTLY ABOVE THEN TEETH BELOW */}
+            <div className="grid grid-cols-[1fr_auto_1fr] items-start pt-2">
+              <div className="grid grid-cols-8 gap-0.5 sm:gap-1">
+                {lowerRight.map(t => renderToothCard(t, 'lower'))}
+              </div>
+
+              {/* Vertical Midline (Bottom half, passing between #25 and #24) */}
+              <div className="w-8 h-full flex items-center justify-center">
+                <div className="w-[1.5px] h-full bg-slate-900 dark:bg-slate-200 rounded-full" />
+              </div>
+
+              <div className="grid grid-cols-8 gap-0.5 sm:gap-1">
+                {lowerLeft.map(t => renderToothCard(t, 'lower'))}
+              </div>
             </div>
 
-            <div className="flex items-center gap-2 pr-2">
-              <span className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
-                PATIENT LEFT (يسار المريض)
-              </span>
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-blue-500 shadow-sm shadow-blue-500/50" />
-            </div>
           </div>
 
-          {/* 4. LOWER JAW (MANDIBLE) - CROWNS POINT UP, ROOTS POINT DOWN */}
-          <div className="relative">
-            <div className="grid grid-cols-[1fr_auto_1fr] items-start">
-              {/* Lower Right (LR 32 to 25: left to right, 25 at midline) */}
-              <div className="grid grid-cols-8 gap-0.5 sm:gap-1">
-                {lowerRight.map(renderToothUnit)}
-              </div>
-
-              {/* Central Vertical Midline Axis Separator */}
-              <div className="w-12 h-full relative flex items-center justify-center shrink-0">
-                <div className="absolute inset-y-0 w-px bg-slate-300 dark:bg-slate-700" />
-                <span className="relative z-10 whitespace-nowrap px-1.5 py-0.5 text-[10px] font-mono font-black tracking-tight text-indigo-600 dark:text-indigo-400 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 shadow-2xs select-none">
-                  25 | 24
-                </span>
-              </div>
-
-              {/* Lower Left (LL 24 to 17: left to right, 24 at midline) */}
-              <div className="grid grid-cols-8 gap-0.5 sm:gap-1">
-                {lowerLeft.map(renderToothUnit)}
-              </div>
+          {/* 3. BOTTOM QUADRANT LABELS */}
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center text-xs font-bold text-slate-600 dark:text-slate-300 px-2 pt-1">
+            <div className="flex items-center justify-between pr-4">
+              <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-mono text-[11px] border border-indigo-500/20">
+                LR • Mandibular Right
+              </span>
+              <span className="text-[10px] font-mono text-slate-400">#32 ➔ #25</span>
             </div>
-          </div>
-
-          {/* 5. LOWER QUADRANTS LABEL STRIP */}
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center text-xs">
-            {/* Lower Right Quadrant (Patient Right, Viewer Left) */}
-            <div className="flex items-center justify-between pt-1.5 px-1 border-t border-slate-200/80 dark:border-slate-800">
-              <div className="flex items-center gap-1.5">
-                <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-mono font-extrabold text-[11px] border border-indigo-500/20">
-                  LR
-                </span>
-                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                  Mandibular Right (يمين المريض السفلي)
-                </span>
-              </div>
-              <span className="text-[10px] font-mono text-slate-400 font-bold">#32 ➔ #25</span>
-            </div>
-
-            {/* Midline Spacer */}
-            <div className="w-12 flex justify-center text-[10px] font-mono text-slate-400 font-bold shrink-0">
-              |
-            </div>
-
-            {/* Lower Left Quadrant (Patient Left, Viewer Right) */}
-            <div className="flex items-center justify-between pt-1.5 px-1 border-t border-slate-200/80 dark:border-slate-800">
-              <span className="text-[10px] font-mono text-slate-400 font-bold">#24 ➔ #17</span>
-              <div className="flex items-center gap-1.5">
-                <span className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
-                  Mandibular Left (يسار المريض السفلي)
-                </span>
-                <span className="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 font-mono font-extrabold text-[11px] border border-purple-500/20">
-                  LL
-                </span>
-              </div>
+            <div className="w-8 flex justify-center text-slate-400 font-mono text-xs">│</div>
+            <div className="flex items-center justify-between pl-4">
+              <span className="text-[10px] font-mono text-slate-400">#24 ➔ #17</span>
+              <span className="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 font-mono text-[11px] border border-purple-500/20">
+                LL • Mandibular Left
+              </span>
             </div>
           </div>
 
@@ -728,7 +884,7 @@ export function TeethChart({
         ) : (
           <span className="text-slate-400 dark:text-slate-500 flex items-center gap-2">
             <Info className="w-4 h-4 text-cyan-500" />
-            Hover over any tooth to view anatomical root structure, quadrant alignment, and clinical specs
+            Hover over any tooth to view anatomical root structure, quadrant position, and restoration status
           </span>
         )}
 
@@ -787,3 +943,5 @@ export function TeethChart({
     </div>
   );
 }
+
+export default TeethChart;

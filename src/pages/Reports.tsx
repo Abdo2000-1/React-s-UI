@@ -243,7 +243,7 @@ export default function Reports() {
             </div>
 
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={dynamicSplineData} onMouseMove={() => sound.playPop()}>
+              <AreaChart data={dynamicSplineData} onMouseMove={() => sound.playChartTick()}>
                 <defs>
                   <linearGradient id="purpleSplineGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#818cf8" stopOpacity={0.4} />
@@ -511,7 +511,7 @@ export default function Reports() {
 
           <div className="h-44 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={dynamicDualSplineData} onMouseMove={() => sound.playPop()}>
+              <AreaChart data={dynamicDualSplineData} onMouseMove={() => sound.playChartTick()}>
                 <defs>
                   <linearGradient id="amberAreaGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="#f59e0b" stopOpacity={0.3} />

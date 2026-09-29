@@ -76,14 +76,46 @@ class SoundManager {
       osc.frequency.setValueAtTime(420, this.ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(840, this.ctx.currentTime + 0.05);
 
-      gain.gain.setValueAtTime(0.035, this.ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.055);
+      gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0005, this.ctx.currentTime + 0.04);
 
       osc.connect(gain);
       gain.connect(this.ctx.destination);
 
       osc.start();
-      osc.stop(this.ctx.currentTime + 0.06);
+      osc.stop(this.ctx.currentTime + 0.045);
+    } catch {}
+  }
+
+  private lastChartTick = 0;
+  /**
+   * Ultra-subtle, non-intrusive micro-tick for charts with strict rate-limiting
+   */
+  public playChartTick() {
+    if (!this.enabled) return;
+    const now = Date.now();
+    // Maximum once every 180ms to avoid machine-gun clicking
+    if (now - this.lastChartTick < 180) return;
+    this.lastChartTick = now;
+
+    try {
+      this.initCtx();
+      if (!this.ctx) return;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(560, this.ctx.currentTime);
+
+      // Very soft, whisper-quiet micro-haptic
+      gain.gain.setValueAtTime(0.008, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.025);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.03);
     } catch {}
   }
 
