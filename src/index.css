@@ -1,0 +1,265 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  :root {
+    /* Official React Futuristic Signature Palette - Light Mode */
+    --color-primary: #087ea4;
+    --color-primary-hover: #0e7490;
+    --color-primary-light: #e0f2fe;
+    --color-primary-foreground: #ffffff;
+    --color-primary-glow: rgba(8, 126, 164, 0.25);
+    
+    --color-react-cyan: #00d8fe;
+    --color-react-blue: #087ea4;
+    --color-react-indigo: #6366f1;
+
+    --color-secondary: #f1f5f9;
+    --color-secondary-hover: #334155;
+    --color-secondary-foreground: #334155;
+    
+    --color-accent: #00d8fe;
+    --color-accent-hover: #0891b2;
+    --color-accent-light: #cffafe;
+    
+    --color-success: #059669;
+    --color-success-hover: #047857;
+    --color-success-light: #d1fae5;
+    --color-success-foreground: #ffffff;
+    
+    --color-warning: #d97706;
+    --color-warning-hover: #b45309;
+    --color-warning-light: #fef3c7;
+    --color-warning-foreground: #ffffff;
+    
+    --color-danger: #e11d48;
+    --color-danger-hover: #be123c;
+    --color-danger-light: #ffe4e6;
+    --color-danger-foreground: #ffffff;
+    
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-elevated: #ffffff;
+    --color-card: #ffffff;
+    --color-card-hover: #f0f9ff;
+    
+    --color-sidebar: #090e1a;
+    --color-sidebar-foreground: #f1f5f9;
+    --color-sidebar-muted: #64748b;
+    --color-sidebar-border: rgba(255, 255, 255, 0.08);
+    --color-sidebar-hover: rgba(0, 216, 254, 0.08);
+    --color-sidebar-active: #00d8fe;
+    
+    --color-foreground: #0f172a;
+    --color-foreground-muted: #475569;
+    --color-foreground-subtle: #94a3b8;
+    
+    --color-border: #e2e8f0;
+    --color-border-strong: #cbd5e1;
+    --color-border-focus: #00d8fe;
+    
+    --color-input-bg: #ffffff;
+    --color-input-border: #e2e8f0;
+    --color-input-border-focus: #00d8fe;
+    --color-input-placeholder: #94a3b8;
+    
+    --color-muted: #f1f5f9;
+    --color-muted-foreground: #64748b;
+    --radius: 12px;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Outfit', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  }
+
+  [data-theme='dark'], .dark {
+    /* Cosmic Obsidian & Electric React Cyan - Dark Mode */
+    --color-background: #060911;
+    --color-surface: #0b1120;
+    --color-surface-elevated: #111b33;
+    --color-card: #0b1120;
+    --color-card-hover: #131f3b;
+    
+    --color-sidebar: #04060c;
+    --color-sidebar-foreground: #e2e8f0;
+    --color-sidebar-muted: #64748b;
+    --color-sidebar-border: rgba(255, 255, 255, 0.06);
+    --color-sidebar-hover: rgba(0, 216, 254, 0.1);
+    --color-sidebar-active: #00d8fe;
+    
+    --color-foreground: #f8fafc;
+    --color-foreground-muted: #94a3b8;
+    --color-foreground-subtle: #64748b;
+    
+    --color-border: #152038;
+    --color-border-strong: #1e2d4f;
+    --color-border-focus: #00d8fe;
+    
+    --color-input-bg: #0b1120;
+    --color-input-border: #1e2d4f;
+    --color-input-border-focus: #00d8fe;
+    --color-input-placeholder: #64748b;
+    
+    --color-muted: #111b33;
+    --color-muted-foreground: #94a3b8;
+    
+    --color-primary: #00d8fe;
+    --color-primary-hover: #38bdf8;
+    --color-primary-light: #082f49;
+    --color-primary-foreground: #04060c;
+    --color-primary-glow: rgba(0, 216, 254, 0.35);
+  }
+
+  [data-theme='red'], .theme-red {
+    /* Crimson Ruby & Deep Obsidian - Executive Cyber Red Palette */
+    --color-background: #0f0507;
+    --color-surface: #1b0a0e;
+    --color-surface-elevated: #260f14;
+    --color-card: #1b0a0e;
+    --color-card-hover: #220c11;
+    
+    --color-sidebar: #0a0305;
+    --color-sidebar-foreground: #fff1f2;
+    --color-sidebar-muted: #fda4af;
+    --color-sidebar-border: rgba(244, 63, 94, 0.15);
+    --color-sidebar-hover: rgba(244, 63, 94, 0.15);
+    --color-sidebar-active: #f43f5e;
+    
+    --color-foreground: #fff1f2;
+    --color-foreground-muted: #fda4af;
+    --color-foreground-subtle: #fb7185;
+    
+    --color-border: #38141c;
+    --color-border-strong: #4c1d27;
+    --color-border-focus: #f43f5e;
+    
+    --color-input-bg: #14070a;
+    --color-input-border: #38141c;
+    --color-input-border-focus: #f43f5e;
+    --color-input-placeholder: #fb7185;
+    
+    --color-muted: #260f14;
+    --color-muted-foreground: #fda4af;
+    
+    --color-primary: #f43f5e;
+    --color-primary-hover: #fb7185;
+    --color-primary-light: #4c0519;
+    --color-primary-foreground: #ffffff;
+    --color-primary-glow: rgba(244, 63, 94, 0.4);
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    overflow-x: hidden;
+  }
+
+  * {
+    border-color: var(--color-border);
+    box-sizing: border-box;
+  }
+
+  /* Universal form control readability in both light & dark modes */
+  input, select, textarea {
+    color: var(--color-foreground);
+    background-color: var(--color-surface);
+    border-color: var(--color-border);
+  }
+
+  [data-theme='dark'] input, 
+  [data-theme='dark'] select, 
+  [data-theme='dark'] textarea,
+  .dark input, 
+  .dark select, 
+  .dark textarea {
+    color: #f8fafc !important;
+    background-color: #0b1120 !important;
+    border-color: #1e293b !important;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--color-foreground-subtle);
+  }
+
+  /* Prevent any hidden text across cards & headings */
+  h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+  }
+}
+
+/* React Signature Aesthetic Utilities */
+.react-glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 216, 254, 0.25);
+}
+
+.react-glow-cyan-sm {
+  box-shadow: 0 0 10px rgba(0, 216, 254, 0.2);
+}
+
+.react-glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .react-glass {
+  background: rgba(11, 17, 32, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.react-gradient-text {
+  background: linear-gradient(135deg, #00d8fe 0%, #3b82f6 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-foreground-subtle); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-foreground-muted); }
+
+.sidebar-scrollbar::-webkit-scrollbar { width: 3px; }
+.sidebar-scrollbar::-webkit-scrollbar-thumb { background: var(--color-sidebar-muted); border-radius: 2px; }
+
+/* Red / Crimson Theme Global Enhancements */
+[data-theme='red'], .theme-red {
+  background-color: #0f0507 !important;
+  color: #fff1f2 !important;
+}
+
+[data-theme='red'] body {
+  background-color: #0f0507 !important;
+  color: #fff1f2 !important;
+}
+
+[data-theme='red'] aside {
+  background-color: #0a0305 !important;
+  border-color: rgba(244, 63, 94, 0.15) !important;
+}
+
+[data-theme='red'] .dark\:bg-slate-900,
+[data-theme='red'] .dark\:bg-gray-800,
+[data-theme='red'] .dark\:bg-gray-900 {
+  background-color: #1b0a0e !important;
+}
+
+[data-theme='red'] .dark\:bg-slate-950 {
+  background-color: #0f0507 !important;
+}
+
+[data-theme='red'] .dark\:border-slate-800,
+[data-theme='red'] .dark\:border-gray-700 {
+  border-color: #38141c !important;
+}
+
